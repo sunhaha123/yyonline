@@ -26,9 +26,9 @@ sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))
 SECRET_KEY = 't#m^8e$p%3=pzwt=*=m8_!e(%#z4l57f&s6aup6t$umrd+w&jh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.etennis.top']
 
 
 # Application definition
