@@ -142,7 +142,7 @@ USE_TZ = False     #国际时间/本地时间
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [(
     os.path.join(BASE_DIR, 'static')
 )]
