@@ -21,17 +21,19 @@ import  xadmin
 from django.views.static import serve
 from yyonline.settings import MEDIA_ROOT
 
-from  users.views import LoginView
+from  users.views import LoginView,LogoutView,IndexView,RegisterView,ActiveUserView
 from  organization.views import OrgView
 
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
 
-    url('^$',TemplateView.as_view(template_name="index.html"),name="index"),
+    url('^$',IndexView.as_view(),name="index"),
     url('^login/$', LoginView.as_view(), name="login"),
-    url('^logout/$', LoginView.as_view(), name="logout"),
-
+    url('^logout/$', LogoutView.as_view(), name="logout"),
+    url('^register/$', RegisterView.as_view(), name="register"),
+    url('^captcha/', include('captcha.urls')),
+    url('active/(?P<active_code>.*)/$',ActiveUserView.as_view(),name="user_active"),
 #    课程机构首页
     url(r'^org/', include('organization.urls', namespace="org")),
     # 配置上传文件

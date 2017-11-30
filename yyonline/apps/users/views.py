@@ -8,12 +8,14 @@ from  django.views.generic.base import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.hashers import make_password
 
-from  .models import UserProfile
-from .form import LoginForm,UploadImageForm,ModifyPwdForm,UserProfile,UserInfoForm
+from  .models import UserProfile,Banner,EmailVerifyRecord
+from .form import LoginForm,UploadImageForm,ModifyPwdForm,UserProfile,UserInfoForm,RegisterForm
 from  utils.mixin_utils import LoginRequireMixin
 from operation.models import UserCourse,UserFavorite
 from  organization.models import CourseOrg,Teacher
 from  courses.models import Course
+from utils.email_send import send_register_email
+
 # Create your views here.
 class CustomBackend(ModelBackend):
     def authenticate(self, username=None, password=None, **kwargs):
@@ -23,6 +25,43 @@ class CustomBackend(ModelBackend):
                 return user
         except Exception as e:
             return None
+
+class ActiveUserView(View):
+    def get(self,request,active_code):
+        all_records = EmailVerifyRecord.objects.filter(code=active_code)
+        if all_records:
+            for record in all_records:
+                email = record.email
+                user = UserProfile.objects.get(email=email)
+                user.is_active = True
+                user.save()
+        else:
+            return render(request, "active_fail.html")
+        return render(request, "login.html")
+
+
+class RegisterView(View):
+    def get(self,request):
+        register_form = RegisterForm()
+        return render(request,"register.html",{
+            "register_form":register_form})
+
+    def post(self,request):
+        register_form = RegisterForm(request.POST)
+        if register_form.is_valid():
+            user_name = request.POST.get("email", "")
+            pass_word = request.POST.get("password", "")
+            user_profile = UserProfile()
+            user_profile.username = user_name
+            user_profile.email = user_name
+            user_profile.is_active = False
+            user_profile.password = make_password(pass_word)
+
+            send_register_email(user_name, "register")
+            user_profile.save()
+            return render(request, "login.html")
+        else:
+            return render(request, "register.html",{"register_form":register_form})
 
 class LoginView(View):
     def get(self,request):
@@ -34,8 +73,12 @@ class LoginView(View):
             pass_word = request.POST.get("password", "")
             user = authenticate(username=user_name, password=pass_word)
             if user is not None:
+              if user.is_active:
                  login(request, user)
-                 return render(request, "index.html")
+                 from django.core.urlresolvers import reverse
+                 return HttpResponseRedirect(reverse("index"))
+              else:
+                  return render(request, "login.html", {"msg": "用户未激活,请到邮箱激活！"})
             else:
                 return render(request, "login.html", {"msg": "用户名或者密码错误！"})
         else:
@@ -150,4 +193,21 @@ class MyFavCourseView(LoginRequireMixin,View):
             course_list.append(course)
         return render(request,'usercenter-fav-course.html',{
             "course_list":course_list,
+        })
+
+class IndexView(View):
+    """
+    首页
+    """
+    def get(self, request):
+        all_banners = Banner.objects.all().order_by("index")
+        courses = Course.objects.filter(is_banner=False)[:6]
+        banner_courses = Course.objects.filter(is_banner=True)[:3]
+        course_orgs = CourseOrg.objects.all()[:10]
+
+        return render(request, "index.html", {
+            "all_banners": all_banners,
+            "courses": courses,
+            "banner_courses": banner_courses,
+            "course_orgs": course_orgs,
         })

@@ -26,9 +26,9 @@ sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))
 SECRET_KEY = 't#m^8e$p%3=pzwt=*=m8_!e(%#z4l57f&s6aup6t$umrd+w&jh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.etennis.top']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'organization',
     'operation',
     'xadmin',
-    'crispy_forms'
+    'crispy_forms',
+    'captcha',
 ]
 AUTH_USER_MODEL = 'users.UserProfile'
 
@@ -142,10 +143,16 @@ USE_TZ = False     #国际时间/本地时间
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [(
     os.path.join(BASE_DIR, 'static')
 )]
+EMAIL_HOST = "smtp.etennis.top"
+EMAIL_PORT  = 25
+EMAIL_HOST_USER = "register@etennis.top"
+EMAIL_HOST_PASSWORD = "Sun78998779"
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')

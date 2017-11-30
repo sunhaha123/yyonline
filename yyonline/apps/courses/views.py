@@ -9,14 +9,14 @@ from  .models import Course
 
 class CourseListView(View):
     def get(self,request):
-        all_courses = Course.objects.all().order_by("-add_time")
+        all_courses = Course.objects.filter(is_banner=False).order_by("-add_time")
 
-        hot_courses = Course.objects.all().order_by("-students")[:3]
+        hot_courses = Course.objects.filter(is_banner=False).order_by("-students")[:3]
         #课程搜索
         search_keywords = request.GET.get('keywords' ,"" )
         # like 语句（i不区分大小写）
         if search_keywords:
-            all_courses = all_courses.filter(Q(name__icontains=search_keywords)|Q(desc__icontains=search_keywords)|Q(detail__icontains=search_keywords))
+            all_courses = all_courses.filter(Q(name__icontains=search_keywords)|Q(desc__icontains=search_keywords)|Q(detail__icontains=search_keywords),is_banner=False)
         # 排序
         sort = request.GET.get("sort", "")
         if sort:
@@ -33,7 +33,7 @@ class CourseListView(View):
             page = 1
             # Provide Paginator with the request object for complete querystring generation
         t = all_courses.count()
-        p = Paginator(all_courses, 1, request=request)
+        p = Paginator(all_courses, 2, request=request)
         courses = p.page(page)
         return render(request,'course-list.html',{
             "all_courses":courses,

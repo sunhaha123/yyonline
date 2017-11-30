@@ -8,7 +8,7 @@ from random import Random
 from django.core.mail import send_mail
 
 from users.models import EmailVerifyRecord
-from MxOnline.settings import DEFAULT_FROM_EMAIL
+from yyonline.settings import DEFAULT_FROM_EMAIL
 
 
 # def random_str(randomlength=8):
@@ -48,15 +48,15 @@ def send_register_email(email,send_type="register"):
     email_title = ""
     email_body = ""
     if send_type == "register":
-        email_title = "注册激活"
-        email_body = "请点击激活：http://127.0.0.1:8000/active/{0}".format(code)
+        email_title = "云鸟网注册激活"
+        email_body = "云鸟网请点击激活：http://etennis.top/active/{0}".format(code)
 
         send_status = send_mail(email_title, email_body, DEFAULT_FROM_EMAIL, [email])
         if send_status:
             pass
     elif send_type == "forget":
         email_title = "重置密码"
-        email_body = "请点击重置密码：http://127.0.0.1:8000/reset/{0}".format(code)
+        email_body = "请点击重置密码：http://etennis.top/reset/{0}".format(code)
 
         send_status = send_mail(email_title, email_body, DEFAULT_FROM_EMAIL, [email])
         if send_status:
