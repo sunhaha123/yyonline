@@ -3,6 +3,9 @@ from django.shortcuts import render
 from  django.views.generic import  View
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.http import HttpResponse, HttpResponseRedirect
+import os
+# import pandas as pd
 
 from  .models import Course
 # Create your views here.
@@ -59,3 +62,16 @@ class CourseDetailView(View):
             "relate_course":relate_course,
 
         })
+
+class Upload_FileView(View):
+    def post(self, request):
+        if request.method == "POST":    # 请求方法为POST时，进行处理
+            myFile =request.FILES.get("myfile", None)    # 获取上传的文件，如果没有文件，则默认为None
+            if not myFile:
+                return HttpResponse("no files for upload!")
+            # text = myFile.read()
+            destination = open(os.path.join("G:\\upload",myFile.name),'wb+')    # 打开特定的文件进行二进制的写操作
+            for chunk in myFile.chunks():      # 分块写入文件
+                destination.write(chunk)
+            destination.close()
+            return HttpResponse("upload over!")

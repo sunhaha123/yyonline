@@ -23,6 +23,7 @@ from yyonline.settings import MEDIA_ROOT
 
 from  users.views import LoginView,LogoutView,IndexView,RegisterView,ActiveUserView
 from  organization.views import OrgView
+from  courses.views import Upload_FileView
 
 
 urlpatterns = [
@@ -42,5 +43,6 @@ urlpatterns = [
     url(r'^course/', include('courses.urls', namespace="course")),
     # 用户
     url(r'^users/', include('users.urls', namespace="users")),
+    url(r'^uploadFile/$',Upload_FileView.as_view(), name="upload_file"),
 
 ]
