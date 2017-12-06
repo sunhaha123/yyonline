@@ -87,7 +87,7 @@ class CourseD2View(View):
                 return HttpResponse("no files for upload!")
             # text = myFile.read()
             import matplotlib
-            matplotlib.use('TkAgg')
+            matplotlib.use('Agg')
             import matplotlib.pyplot as plt
 
             matplotlib.rcParams['font.sans-serif'] = ['SimHei']
