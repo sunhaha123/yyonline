@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}智能训练-云鸟网{% endblock %}
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+            <ul  class="crumbs">
+                <li><a href="/">首页</a>></li>
+                <li><a href="{% url 'course:course_list' %}">智能训练课程</a>></li>
+                <li>智能识别</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+
+{% endblock %}
