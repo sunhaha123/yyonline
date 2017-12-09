@@ -20,7 +20,7 @@ class UserAsk(models.Model):
         verbose_name = u"用户咨询"
         verbose_name_plural = verbose_name
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 class CourseComments(models.Model):
@@ -47,8 +47,8 @@ class UserFavorite(models.Model):
         verbose_name = u"用户收藏"
         verbose_name_plural = verbose_name
 
-    # def __unicode__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
 
 class UserMessage(models.Model):
     user = models.IntegerField(default=0,verbose_name=u"接受用户")
@@ -57,7 +57,7 @@ class UserMessage(models.Model):
     add_time = models.DateTimeField(default=datetime.now,verbose_name=u"添加时间")
 
     class Meta:
-        verbose_name = u"用户信息"
+        verbose_name = u"用户消息"
         verbose_name_plural = verbose_name
 
     # def __unicode__(self):

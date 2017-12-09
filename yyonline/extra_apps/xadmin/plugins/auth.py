@@ -59,9 +59,9 @@ class GroupAdmin(object):
 
 class UserAdmin(object):
     change_user_password_template = None
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
-    list_filter = ('is_staff', 'is_superuser', 'is_active')
-    search_fields = ('username', 'first_name', 'last_name', 'email')
+    list_display = ('username', 'nick_name', 'last_login', 'email')
+    list_filter = ('username', 'nick_name', 'last_login', 'email')
+    search_fields = ('username', 'nick_name', 'last_login', 'email')
     ordering = ('username',)
     style_fields = {'user_permissions': 'm2m_transfer'}
     model_icon = 'fa fa-user'
@@ -85,19 +85,26 @@ class UserAdmin(object):
             self.form_layout = (
                 Main(
                     Fieldset('',
-                             'username', 'password',
+                             'username',
+                             'nick_name',
                              css_class='unsort no_title'
                              ),
                     Fieldset(_('Personal info'),
                              Row('first_name', 'last_name'),
-                             'email'
-                             ),
-                    Fieldset(_('Permissions'),
-                             'groups', 'user_permissions'
+                             'image',
+                             'gender',
+                             'mobile',
+                             'email',
+                             'birday',
+                             'address',
                              ),
                     Fieldset(_('Important dates'),
                              'last_login', 'date_joined'
                              ),
+                    Fieldset(_('Permissions'),
+                             'groups', 'user_permissions'
+                             ),
+
                 ),
                 Side(
                     Fieldset(_('Status'),

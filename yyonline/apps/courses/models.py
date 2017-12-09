@@ -40,7 +40,7 @@ class Course(models.Model):
         #反向获取课程用户信息
         return self.usercourse_set.all()[:3]
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -53,7 +53,7 @@ class Lesson(models.Model):
         verbose_name=  u"课程章节"
         verbose_name_plural = verbose_name
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -67,7 +67,7 @@ class Video(models.Model):
         verbose_name = u"课程视频"
         verbose_name_plural = verbose_name
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 class CourseResource(models.Model):
@@ -80,7 +80,7 @@ class CourseResource(models.Model):
         verbose_name = u"课程资源"
         verbose_name_plural = verbose_name
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 class Banner(models.Model):

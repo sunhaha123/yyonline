@@ -52,6 +52,10 @@
 							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"  name="gender" value="male" {% if request.user.gender == 'male' %}checked="checked"{% endif %}>男</label>
 							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="female" {% if request.user.gender == 'female' %}checked="checked"{% endif %}>女</label>
 						</li>
+                        <li>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份：
+                        	<input class="borderno" type="text" name="is_staff" readonly="readonly" value="{% if  request.user.is_staff == '1'%}教练{% else %}学员{% endif %}"/>
+{#                            <span class="green changeemai_btn">[修改]</span>#}
+                    	</li>
 						<li class="p_infor_city">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：
                             <input type="text" name="address" id="address" placeholder="请输入你的地址" value="{{ request.user.address }}" maxlength="10">
 						    <i class="error-tips"></i>

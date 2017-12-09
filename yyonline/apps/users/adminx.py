@@ -6,16 +6,19 @@ Created on Wed Oct 11 15:12:47 2017
 """
 import  xadmin
 from xadmin import  views
+from  xadmin.plugins.auth import  UserAdmin
+from  xadmin.layout import Main ,Side, Row, Fieldset
 
-from  .models import EmailVerifyRecord
+from  .models import EmailVerifyRecord,UserProfile
 from  .models import Banner
+
 
 class BaseSetting(object):
     enable_themes = True
     use_bootswatch = True
 
 class GloabalSettings(object):
-    site_title = "云鸟后台管理系统"
+    site_title = "云鸟网"
     site_footer = "云鸟网"
     menu_style = "accordion"
 
@@ -29,8 +32,15 @@ class BannerAdmin(object):
     search_fields = ['title', 'image', 'url', 'index']
     list_filter = ['title', 'image', 'url', 'index','add_time']
 
+# class UserAdmin(object):
+#     list_display = ['username', 'nick_name', 'last_login', 'email']
+#     search_fields = ['username', 'nick_name', 'last_login', 'email']
+#     list_filter = ['username', 'nick_name', 'last_login', 'email']
+
 
 xadmin.site.register(EmailVerifyRecord,EmailVerifyRecordAdmin)
-xadmin.site.register(Banner,BannerAdmin)
+xadmin.site.register(Banner, BannerAdmin)
+# xadmin.site.register(UserProfile,UserAdmin)
+# xadmin.site.register(UserProfile,UserProfileAdmin)
 xadmin.site.register(views.BaseAdminView,BaseSetting)
 xadmin.site.register(views.CommAdminView,GloabalSettings)
