@@ -104,18 +104,9 @@
                     <h2>邮箱注册</h2>
                 </div>
 
-                <div class="tab-form">
-                    <form id="email_register_form" method="post" action="{% url 'register' %}" autocomplete="off">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='gTZljXgnpvxn0fKZ1XkWrM1PrCGSjiCZ' />
-                        <div class="searchbox fr">
-         		   <select name="select">
-         		     <option value ="teacher"> 我 是 教 练 </option>
-         		     <option value ="student"> 我 是 学 员 </option>
-       		     </select>
-         		 </div> 
+                
                  <p>&nbsp;</p>
-                 <p>&nbsp;</p>
-                 <p>&nbsp;</p>
+                 
                  
                         <div class="form-group marb20 {% if register_form.errors.email %} errorput {% endif %}">
                   <label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>

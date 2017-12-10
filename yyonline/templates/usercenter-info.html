@@ -53,7 +53,7 @@
 							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="female" {% if request.user.gender == 'female' %}checked="checked"{% endif %}>女</label>
 						</li>
                         <li>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份：
-                        	<input class="borderno" type="text" name="is_staff" readonly="readonly" value="{% if  request.user.is_staff == '1'%}教练{% else %}学员{% endif %}"/>
+                        	<input class="borderno" type="text" name="is_staff" readonly="readonly" value="{% if  request.user.is_staff == 1%}教练{% else %}学员{% endif %}"/>
 {#                            <span class="green changeemai_btn">[修改]</span>#}
                     	</li>
 						<li class="p_infor_city">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：
