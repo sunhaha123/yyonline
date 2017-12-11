@@ -147,9 +147,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-EMAIL_HOST = "smtp.etennis.top"
-EMAIL_PORT  = 25
-EMAIL_HOST_USER = "register@etennis.top"
+EMAIL_HOST = "sungamil007@gmail.com"
+EMAIL_PORT  = 587
+EMAIL_HOST_USER = "sungamil007@gmail.com"
 EMAIL_HOST_PASSWORD = "Sun78998779"
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
