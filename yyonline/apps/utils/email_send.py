@@ -50,10 +50,12 @@ def send_register_email(email,send_type="register"):
     if send_type == "register":
         email_title = "云鸟网注册激活"
         email_body = "云鸟网请点击激活：http://etennis.top/active/{0}".format(code)
+        try:
+         send_status = send_mail(email_title, email_body, DEFAULT_FROM_EMAIL, [email], fail_silently=False)
 
-        send_status = send_mail(email_title, email_body, DEFAULT_FROM_EMAIL, [email])
-        if send_status:
-            pass
+        except SMTPException as e:
+            print(e)
+
     elif send_type == "forget":
         email_title = "重置密码"
         email_body = "请点击重置密码：http://etennis.top/reset/{0}".format(code)

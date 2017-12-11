@@ -14,7 +14,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(required=True,min_length=5)
 
 class RegisterForm(forms.Form):
-    is_teacher = forms.BooleanField(required=True)
+    # is_teacher = forms.BooleanField(required=True)
     email = forms.EmailField(required=True)
     password = forms.CharField(required=True, min_length=5)
     captcha = CaptchaField(error_messages={"invalid":u"验证码错误"})
