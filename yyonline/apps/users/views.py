@@ -7,6 +7,7 @@ from django.db.models import Q
 from  django.views.generic.base import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.hashers import make_password
+from  django.contrib.auth.models import Group,Permission
 
 from  .models import UserProfile,Banner,EmailVerifyRecord
 from .form import LoginForm,UploadImageForm,ModifyPwdForm,UserProfile,UserInfoForm,RegisterForm
@@ -60,6 +61,10 @@ class RegisterView(View):
             user_profile.password = make_password(pass_word)
 
             send_register_email(user_name, "register")
+            user_profile.save()
+            if user_profile.is_staff == 1:
+                # group = Group()
+                user_profile.groups.add(Group.objects.get(id=1))
             user_profile.save()
             return render(request, "login.html")
         else:
