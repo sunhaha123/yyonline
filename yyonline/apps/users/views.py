@@ -49,9 +49,11 @@ class RegisterView(View):
     def post(self,request):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
+            is_staff =  request.POST.get("is_teacher","")
             user_name = request.POST.get("email", "")
             pass_word = request.POST.get("password", "")
             user_profile = UserProfile()
+            user_profile.is_staff = int(is_staff)
             user_profile.username = user_name
             user_profile.email = user_name
             user_profile.is_active = False
