@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}智能训练-云鸟网{% endblock %}
+{% block title %}体育夏令营-跃童·阳光{% endblock %}
 {% block custom_bread %}
     <section>
         <div class="wp">
             <ul  class="crumbs">
                 <li><a href="/">首页</a>></li>
-                <li><a href="{% url 'course:course_list' %}">智能训练课程</a>></li>
+                <li><a href="{% url 'course:course_list' %}">体育夏令营课程</a>></li>
                 <li>智能识别</li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
 						</div>
 						<ul class="parameter">
 							<li><span class="pram word3">时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</span><span>{{ course.learn_times }}</span></li>
-                            <li><span class="pram word3">章&nbsp;节&nbsp;数：</span><span>{{ course.get_zj_nums }}</span></li>
+{#                            <li><span class="pram word3">章&nbsp;节&nbsp;数：</span><span>{{ course.get_zj_nums }}</span></li>#}
                             <li><span class="pram word3">课程类别：</span><span title="">{{ course.category }}</span></li>
 							<li class="piclist"><span class="pram word4">学习用户：</span>
                             {% for user_course in course.get_learn_users %}
@@ -112,13 +112,13 @@
 				</div>
 				<div class="tab_cont tab_cont1">
                     <p>&nbsp; &nbsp; {{ course.detail }}</p>
-                    <form enctype="multipart/form-data" action="{% url 'course:course_detail2' course.id %}" method="post">
-
-                        <input type="file" name="myfile" id="avatarUp" class="js-img-up"/>
+{#                    <form enctype="multipart/form-data" action="{% url 'course:course_detail2' course.id %}" method="post">#}
+{##}
+{#                        <input type="file" name="myfile" id="avatarUp" class="js-img-up"/>#}
 {#                        <span class="button btn-green btn-w100" id="jsAvatarBtn">上传</span>#}
-                        <input type="submit" class="button btn-green btn-w100" value="开始识别"/>
-                         {% csrf_token %}
-                    </form>
+{#                        <input type="submit" class="button btn-green btn-w100" value="开始识别"/>#}
+{#                         {% csrf_token %}#}
+{#                    </form>#}
 
 					<p>
 

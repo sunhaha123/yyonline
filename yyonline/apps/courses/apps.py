@@ -6,4 +6,4 @@ from django.apps import AppConfig
 
 class CoursesConfig(AppConfig):
     name = 'courses'
-    verbose_name = "网球课程"
+    verbose_name = "课程"

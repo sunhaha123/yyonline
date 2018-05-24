@@ -4,11 +4,11 @@ from  django.views.generic import  View
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
-from keras.models import load_model
-netfile = "media/tmp/net_0.h5"
-model = load_model(netfile)
+# from keras.models import load_model
+# netfile = "media/tmp/net_0.h5"
+# model = load_model(netfile)
 import numpy as np
-model.predict(np.zeros((2,50,9)))
+# model.predict(np.zeros((2,50,9)))
 import pandas as pd
 
 import time
@@ -53,13 +53,13 @@ class CourseListView(View):
 
 class CourseDetailView(View):
     def get(self,request,course_id):
-        if not request.user.is_authenticated():
-            """
-            此处user为一个匿名类，django内置的一种方法，此user与正常的user有相似的用法
-            所以此处调用user.is_authenticated()方法，后面带括号.
-            """
-            from django.core.urlresolvers import reverse
-            return HttpResponseRedirect(reverse("login"))
+        # if not request.user.is_authenticated():
+        #     """
+        #     此处user为一个匿名类，django内置的一种方法，此user与正常的user有相似的用法
+        #     所以此处调用user.is_authenticated()方法，后面带括号.
+        #     """
+        #     from django.core.urlresolvers import reverse
+        #     return HttpResponseRedirect(reverse("login"))
         course = Course.objects.get(id=int(course_id))
         #增加课程点击数
         course.click_nums +=1
@@ -163,4 +163,4 @@ class CourseD2View(View):
             # for chunk in myFile.chunks():      # 分块写入文件
             #     destination.write(chunk)
             # destination.close()
-            # return HttpResponse("upload over!")
+            return HttpResponse("upload over!")

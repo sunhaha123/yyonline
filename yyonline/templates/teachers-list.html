@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}课程教练-云鸟网{% endblock %}
+{% block title %}课程教练-跃童·阳光{% endblock %}
 {% block custom_bread %}
     <section>
         <div class="wp">
@@ -52,11 +52,11 @@
 							<li>工作年限：<span>{{ teacher.work_years}}</span></li>
 							<li>工作职位：<span>{{ teacher.work_position}}</span></li>
 							<li>就职公司：<span>{{ teacher.work_company}}</span></li>
-							<li>年龄：<span>{{ teacher.age}}</span></li>
+{#							<li>年龄：<span>{{ teacher.age}}</span></li>#}
 							<li>教学特点：<span>{{ teacher.points }}</span></li>
 						</ul>
 					</dd>
-                    <a class="buy buyservice" href="{% url 'org:teacher_detail' teacher.id %}"><br/>查看<br/>详情</a>
+{#                    <a class="buy buyservice" href="{% url 'org:teacher_detail' teacher.id %}"><br/>查看<br/>详情</a>#}
                 </dl>
             {% endfor %}
 

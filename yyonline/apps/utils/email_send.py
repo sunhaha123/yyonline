@@ -49,8 +49,8 @@ def send_register_email(email,send_type="register"):
     email_title = ""
     email_body = ""
     if send_type == "register":
-        email_title = "云鸟网注册激活"
-        email_body = "云鸟网请点击激活：http://etennis.top/active/{0}".format(code)
+        email_title = "跃童·阳光注册激活"
+        email_body = "跃童·阳光请点击激活：http://etennis.top/active/{0}".format(code)
         try:
          send_status = send_mail(email_title, email_body, DEFAULT_FROM_EMAIL, [email], fail_silently=False)
 

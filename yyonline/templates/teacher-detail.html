@@ -29,7 +29,7 @@
                                      {% if has_teacher_faved %}已收藏{% else %}收藏{% endif %}
                                 </span>
                                 <span class="fr btn2 shareBtn bdsharebuttonbox"
-                                      data-text="授课教师-李老师-云鸟网"
+                                      data-text="授课教师-李老师-跃童·阳光"
                                       data-desc="我在#慕课网#发现了"
                                       data-comment="李老师，工作年限：5年；学历：本科；所在公司：阿里巴巴&nbsp;；经典案例：django入门和深入；flask入门"
                                       data-url="/diary/hk_detail/10/">
@@ -52,40 +52,40 @@
                     </dl>
                 </div>
             </div>
-            <div class="butler_detail_cont clearfix">
-                <div class="left layout">
-				<div class="head">
-					<ul class="tab_header">
-						<li class="active"><a href="{% url 'course:course_list'  %}">全部课程</a> </li>
-					</ul>
-				</div>
-                    <div class="companycenter">
-                        <div class="group_list brief">
-                            {% for teacher_course in all_courses %}
-                                <div class="module1_5 box">
-                                <a href="{% url 'org:teacher_detail' teacher.id %}">
-                                    <img width="214" height="190" class="scrollLoading" src="{{ MEDIA_URL }}{{ teacher_course.image }}"/>
-                                </a>
-                                <div class="des">
-                                    <a href="{% url 'org:teacher_detail' teacher.id %}"><h2>{{ teacher_course.name }}</h2></a>
-                                    <span class="fl">时长：<i class="key">{{ teacher_course.learn_times }}</i></span>
-                                    <span class="fr">学习人数：{{ teacher_course.students }}</span>
-                                </div>
-                                <div class="bottom">
-                                    <span class="fl">{{ teacher_course.course_org.name }}</span>
-                                    <span class="star fr  notlogin" data-favid="15">{{ teacher_course.fav_nums }}</span>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                <!--<div class="pageturn">-->
-                    <!--<ul class="pagelist">-->
-                        <!--<li class="active"><a href="?page=1">1</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            </div>
-            </div>
+{#            <div class="butler_detail_cont clearfix">#}
+{#                <div class="left layout">#}
+{#				<div class="head">#}
+{#					<ul class="tab_header">#}
+{#						<li class="active"><a href="{% url 'course:course_list'  %}">全部课程</a> </li>#}
+{#					</ul>#}
+{#				</div>#}
+{#                    <div class="companycenter">#}
+{#                        <div class="group_list brief">#}
+{#                            {% for teacher_course in all_courses %}#}
+{#                                <div class="module1_5 box">#}
+{#                                <a href="{% url 'org:teacher_detail' teacher.id %}">#}
+{#                                    <img width="214" height="190" class="scrollLoading" src="{{ MEDIA_URL }}{{ teacher_course.image }}"/>#}
+{#                                </a>#}
+{#                                <div class="des">#}
+{#                                    <a href="{% url 'org:teacher_detail' teacher.id %}"><h2>{{ teacher_course.name }}</h2></a>#}
+{#                                    <span class="fl">时长：<i class="key">{{ teacher_course.learn_times }}</i></span>#}
+{#                                    <span class="fr">学习人数：{{ teacher_course.students }}</span>#}
+{#                                </div>#}
+{#                                <div class="bottom">#}
+{#                                    <span class="fl">{{ teacher_course.course_org.name }}</span>#}
+{#                                    <span class="star fr  notlogin" data-favid="15">{{ teacher_course.fav_nums }}</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                <!--<div class="pageturn">-->#}
+{#                    <!--<ul class="pagelist">-->#}
+{#                        <!--<li class="active"><a href="?page=1">1</a></li>-->#}
+{#                    <!--</ul>-->#}
+{#                <!--</div>-->#}
+{#            </div>#}
+{#            </div>#}
         </div>
         <div class="fr list">
              <div class="butler_detail_list">
