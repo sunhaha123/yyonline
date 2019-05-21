@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
-	<title>{% block title %}个人信息- 慕学在线网{% endblock %}</title>
+{#	<title>{% block title %}个人信息- 慕学在线网{% endblock %}</title>#}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css'%}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css'%}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
@@ -27,7 +27,7 @@
              <div class="top">
 				<div class="wp">
 					<div class="fl">
-						<p>服务电话：<b>021-65129251</b></p>
+{#						<p>服务电话：<b>23333333</b></p>#}
                     </div>
 					    <!--登录后跳转-->
 
@@ -56,7 +56,7 @@
               <div class="top">
 				<div class="wp">
 					<div class="fl">
-						<p>服务电话：<b>23333333</b></p></div>
+{#						<p>服务电话：<b>23333333</b></p></div>#}
             	<a style="color:white" class="fr registerbtn" href="register.html">注册</a>
               <a style="color:white" class="fr loginbtn" href="/login/">登录</a>
             </div>
@@ -64,8 +64,8 @@
           {% endif %}
     <div class="middle">
         <div class="wp">
-            <a href="/"><img class="fl" src="{% static 'images/logo1.jpg'%}"/></a>
-            <h1>我的跃童·阳光</h1>
+            <a href="/"><img class="fl" src="{% static 'images/logo2.png'%}"/></a>
+            <h1>我的人体运动识别系统</h1>
         </div>
     </div>
 			</div>
@@ -91,12 +91,12 @@
 	<div class="left">
         <ul>
             <li {% if request.path|slice:"11" == "/users/info" %}class="active2"{% endif %}><a href="{% url "users:user_info" %}">个人资料</a></li>
-            <li {% if request.path|slice:"15" == "/users/mycourse" %}class="active2"{% endif %}><a href="{% url 'users:mycourse' %}">我的课程</a></li>
-            <li {% if request.path|slice:"16" == "/users/myfav/org" %}class="active2"{% endif %}><a href="{% url 'users:myfav_org' %}">我的收藏</a></li>
+{#            <li {% if request.path|slice:"15" == "/users/mycourse" %}class="active2"{% endif %}><a href="{% url 'users:mycourse' %}">我的课程</a></li>#}
+{#            <li {% if request.path|slice:"16" == "/users/myfav/org" %}class="active2"{% endif %}><a href="{% url 'users:myfav_org' %}">我的收藏</a></li>#}
             <li >
                 {% if request.user.is_staff == 1 %}
                 <a href="/xadmin" style="position: relative;">
-                    进入后台管理系统
+                    运动数据管理
                 </a>
                 {% else %}
                 <a href="" style="position: relative;">
@@ -146,8 +146,8 @@
 							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"  name="gender" value="male" >男</label>
 							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="female" checked="checked">女</label>
 						</li>
-						<li class="p_infor_city">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：
-                            <input type="text" name="address" id="address" placeholder="请输入你的地址" value="我来自火星" maxlength="10">
+						<li class="p_infor_city">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高：
+                            <input type="text" name="address" id="address" placeholder="请输入你的身高" value="kg" maxlength="10">
 						    <i class="error-tips"></i>
                         </li>
 						<li>手&nbsp;&nbsp;机&nbsp;&nbsp;号：

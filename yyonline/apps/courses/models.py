@@ -10,7 +10,7 @@ from  users.models import  UserProfile
 # Create your models here.
 
 class Course(models.Model):
-    course_org = models.ForeignKey(CourseOrg, verbose_name=u"课程机构", null=True, blank=True)
+    course_org = models.ForeignKey(CourseOrg, verbose_name=u"模型名称", null=True, blank=True)
     name = models.CharField(max_length=50, verbose_name=u"课程名")
     is_banner = models.BooleanField(default=False, verbose_name=u"是否轮播")
     teacher = models.ForeignKey(Teacher, verbose_name=u"讲师", null=True, blank=True)
@@ -29,7 +29,7 @@ class Course(models.Model):
     tag = models.CharField(default='',verbose_name="课程标签",max_length=10)
 
     class Meta:
-        verbose_name = u"课程"
+        verbose_name = u"识别模型"
         verbose_name_plural = verbose_name
 
     def get_zj_nums(self):
@@ -104,4 +104,33 @@ class Sensor(models.Model):
         verbose_name_plural = verbose_name
 
 
+class activityID(models.Model):
+    # image = models.ImageField(max_length=100, upload_to="sensor/%Y%m", verbose_name=u"曲线图", default="")
+    name = models.CharField(max_length=20, verbose_name=u"运动类别",)
+    # user = models.ForeignKey(UserProfile, verbose_name=u"用户", null=True, blank=True)
+
+    class Meta:
+        verbose_name = u"运动种类"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+class SportData(models.Model):
+    action_time = models.DateTimeField(default=datetime.now, verbose_name=u"创建时间")
+    user = models.ForeignKey(UserProfile, verbose_name=u"用户", null=True, blank=True)
+    sportid = models.ForeignKey(activityID,verbose_name=u"运动类别")
+    rate = models.IntegerField(verbose_name=u"心率",blank=True,null=True)
+    position = models.IntegerField(verbose_name=u"传感器位置", default=0)
+    type = models.IntegerField(verbose_name=u"传感器种类 ", default=0)
+    data_x = models.FloatField(verbose_name=u"传感器x轴数据")
+    data_y = models.FloatField(verbose_name=u"传感器y轴数据")
+    data_z = models.FloatField(verbose_name=u"传感器z轴数据")
+
+    class Meta:
+        verbose_name = u"运动数据"
+        verbose_name_plural = verbose_name
+
+    # def __str__(self):
+    #     return self.name
 

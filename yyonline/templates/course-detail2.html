@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}体育夏令营-跃童·阳光{% endblock %}
+{% block title %}智能训练-人体运动识别系统{% endblock %}
 {% block custom_bread %}
     <section>
         <div class="wp">
             <ul  class="crumbs">
                 <li><a href="/">首页</a>></li>
-                <li><a href="{% url 'course:course_list' %}">体育夏令营课程</a>></li>
+                <li><a href="{% url 'course:course_list' %}">智能识别</a>></li>
                 <li>智能识别</li>
             </ul>
         </div>
@@ -27,26 +27,26 @@
 					<div class="des">
 						<h1 title="django 从入门到精通体验开始了">{{ course.name }}</h1>
 						<span class="key">{{ course.desc }}</span>
-						<div class="prize">
-							<span class="fl">难度：<i class="key">{{ course.get_degree_display }}</i></span>
-							<span class="fr">学习人数：{{ course.students }}</span>
-						</div>
-						<ul class="parameter">
-							<li><span class="pram word3">时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</span><span>{{ course.learn_times }}</span></li>
-                            <li><span class="pram word3">章&nbsp;节&nbsp;数：</span><span>{{ course.get_zj_nums }}</span></li>
-                            <li><span class="pram word3">课程类别：</span><span title="">{{ course.category }}</span></li>
-							<li class="piclist"><span class="pram word4">学习用户：</span>
-                            {% for user_course in course.get_learn_users %}
-                                    <span class="pic"><img width="40" height="40" src="{{ MEDIA_URL }}{{ user_course.user.image }}"/></span>
-                            {% endfor %}
-							</li>
-						</ul>
-						<div class="btns">
-							<div class="btn colectgroupbtn"  id="jsLeftBtn">
-                                  收藏
-                            </div>
+{#						<div class="prize">#}
+{#							<span class="fl">难度：<i class="key">{{ course.get_degree_display }}</i></span>#}
+{#							<span class="fr">学习人数：{{ course.students }}</span>#}
+{#						</div>#}
+{#						<ul class="parameter">#}
+{#							<li><span class="pram word3">时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</span><span>{{ course.learn_times }}</span></li>#}
+{#                            <li><span class="pram word3">章&nbsp;节&nbsp;数：</span><span>{{ course.get_zj_nums }}</span></li>#}
+{#                            <li><span class="pram word3">课程类别：</span><span title="">{{ course.category }}</span></li>#}
+{#							<li class="piclist"><span class="pram word4">学习用户：</span>#}
+{#                            {% for user_course in course.get_learn_users %}#}
+{#                                    <span class="pic"><img width="40" height="40" src="{{ MEDIA_URL }}{{ user_course.user.image }}"/></span>#}
+{#                            {% endfor %}#}
+{#							</li>#}
+{#						</ul>#}
+{#						<div class="btns">#}
+{#							<div class="btn colectgroupbtn"  id="jsLeftBtn">#}
+{#                                  收藏#}
+{#                            </div>#}
 {#                                <div class="buy btn"><a style="color: white" href="course-video.html">开始学习</a></div>#}
-						</div>
+{#						</div>#}
 					</div>
                     <div class="group-share-box">
                         <div class="bdsharebuttonbox"
@@ -66,8 +66,8 @@
 				</div>
 				<div class="right">
 					<div class="head">
-						<h1>授课机构</h1>
-						<p>世界名校，课程权威</p>
+						<h1>识别模型</h1>
+{#						<p>世界名校，课程权威</p>#}
 					</div>
 					<div class="pic">
                         <a href="/company/14/">
@@ -107,7 +107,7 @@
 			<div class="left layout">
 				<div class="head">
 					<ul class="tab_header">
-						<li class="active">课程详情</li>
+						<li class="active">识别详情</li>
 					</ul>
 				</div>
 				<div class="tab_cont tab_cont1">
@@ -122,14 +122,15 @@
 					<p><img src="{{ MEDIA_URL }}{{ sensor.image }}" title="" alt="aobama.png"/> </p>
 {#                    <p>识别结果：{{ sensor.category }}</p>#}
                     <h1 class="ue_t" label="Title center" name="tc" style="border-bottom-color:#cccccc;border-bottom-width:2px;border-bottom-style:solid;padding:0px 4px 0px 0px;text-align:center;margin:0px 0px 20px;"><span style="color:#c0504d;">识别结果：{{ sensor.category }}</span></h1>
-                    <input type="button" name="Submit" onclick="javascript:history.back(-1);" value="重新识别">
+                    <input type="button"  class="button btn-green btn-w100" name="Submit" onclick="javascript:history.back(-1);" value="重新识别">
+{#                    <input type="submit" class="button btn-green btn-w100" value="开始识别"/>#}
 {#                    <table><tbody><tr class="firstRow"><td style="word-break: break-all;" width="53" valign="top">课程</td><td style="word-break: break-all;" width="53" valign="top">课时<br/> </td><td style="word-break: break-all;" width="53" valign="top">难度<br/> </td><td style="word-break: break-all;" width="53" valign="top">时长<br/> </td><td style="word-break: break-all;" width="53" valign="top">学习人数<br/> </td><td style="word-break: break-all;" width="53" valign="top">点击数<br/> </td><td style="word-break: break-all;" width="53" valign="top">点击数</td><td style="word-break: break-all;" width="53" valign="top">点击数</td></tr><tr><td style="word-break: break-all;" width="53" valign="top">django开发<br/> </td><td style="word-break: break-all;" width="53" valign="top">20<br/> </td><td style="word-break: break-all;" width="53" valign="top">中级<br/> </td><td style="word-break: break-all;" width="53" valign="top">30<br/> </td><td style="word-break: break-all;" width="53" valign="top">100000<br/> </td><td style="word-break: break-all;" width="53" valign="top">100000<br/> </td><td style="word-break: break-all;" width="53" valign="top">100000<br/> </td><td style="word-break: break-all;" width="53" valign="top">100000<br/> </td></tr><tr><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td></tr><tr><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td></tr><tr><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td></tr><tr><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td><td width="53" valign="top"><br/> </td></tr></tbody></table><p><br/> </p><p><img src="http://img.baidu.com/hi/jx2/j_0025.gif"/> </p><p><br/> </p><h1 class="ue_t" label="Title center" name="tc" style="border-bottom-color:#cccccc;border-bottom-width:2px;border-bottom-style:solid;padding:0px 4px 0px 0px;text-align:center;margin:0px 0px 20px;"><span style="color:#c0504d;">[键入文档标题]</span></h1><p style="text-align:center;"><strong class="ue_t">[键入文档副标题]</strong></p><h3><span class="ue_t" style="font-family:幼圆">[标题 1]</span></h3><p class="ue_t" style="text-indent:2em;">对于“插入”选项卡上的库，在设计时都充分考虑了其中的项与文档整体外观的协调性。 您可以使用这些库来插入表格、页眉、页脚、列表、封面以及其他文档构建基块。 您创建的图片、图表或关系图也将与当前的文档外观协调一致。</p><p class="ue_t" style="text-indent:2em;"><img src="http://127.0.0.1:8000../media/courses/ueditor/57aa86a0000145c512000460_20161210234050_865.jpg" title="" alt="57aa86a0000145c512000460.jpg"/> </p><h3><span class="ue_t" style="font-family:幼圆">[标题 2]</span></h3><p><img src="http://api.map.baidu.com/staticimage?center=116.410899,39.863624&zoom=11&width=530&height=340&markers=116.404,39.915" width="530" height="340"/> </p><p class="ue_t" style="text-indent:2em;">在“开始”选项卡上，通过从快速样式库中为所选文本选择一种外观，您可以方便地更改文档中所选文本的格式。 您还可以使用“开始”选项卡上的其他控件来直接设置文本格式。大多数控件都允许您选择是使用当前主题外观，还是使用某种直接指定的格式。</p><h3><span class="ue_t" style="font-family:幼圆">[标题 3]</span></h3><p>2016-12-10</p><p class="ue_t">对于“插入”选项卡上的库，在设计时都充分考虑了其中的项与文档整体外观的协调性。 您可以使用这些库来插入表格、页眉、页脚、列表、封面以及其他文档构建基块。 您创建的图片、图表或关系图也将与当前的文档外观协调一致。</p><p><br/> </p>#}
 
 
                 </div>
             </div>
 			<div class="right layout">
-				<div class="head">相关课程推荐</div>
+				<div class="head">相关识别</div>
                 <div class="group_recommend">
                 {% for relate_course in relate_course %}
                         <dl>
@@ -140,7 +141,7 @@
                             </dt>
                             <dd>
                                 <a target="_blank" href=""><h2> {{ relate_course.name }}</h2></a>
-                                <span class="fl">学习时长：<i class="key">{{ relate_course.learn_times }}</i></span>
+{#                                <span class="fl">学习时长：<i class="key">{{ relate_course.learn_times }}</i></span>#}
                             </dd>
                         </dl>
                 {% endfor %}

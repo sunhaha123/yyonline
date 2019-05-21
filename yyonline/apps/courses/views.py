@@ -4,11 +4,11 @@ from  django.views.generic import  View
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
-# from keras.models import load_model
-# netfile = "media/tmp/net_0.h5"
-# model = load_model(netfile)
+from keras.models import load_model
+netfile = "media/tmp/sum.h5"
+model = load_model(netfile)
 import numpy as np
-# model.predict(np.zeros((2,50,9)))
+model.predict(np.zeros((23,100,9)))
 import pandas as pd
 
 import time
@@ -53,13 +53,13 @@ class CourseListView(View):
 
 class CourseDetailView(View):
     def get(self,request,course_id):
-        # if not request.user.is_authenticated():
-        #     """
-        #     此处user为一个匿名类，django内置的一种方法，此user与正常的user有相似的用法
-        #     所以此处调用user.is_authenticated()方法，后面带括号.
-        #     """
-        #     from django.core.urlresolvers import reverse
-        #     return HttpResponseRedirect(reverse("login"))
+        if not request.user.is_authenticated():
+            """
+            此处user为一个匿名类，django内置的一种方法，此user与正常的user有相似的用法
+            所以此处调用user.is_authenticated()方法，后面带括号.
+            """
+            from django.core.urlresolvers import reverse
+            return HttpResponseRedirect(reverse("login"))
         course = Course.objects.get(id=int(course_id))
         #增加课程点击数
         course.click_nums +=1
@@ -93,7 +93,11 @@ class CourseD2View(View):
             matplotlib.rcParams['font.sans-serif'] = ['SimHei']
             matplotlib.rcParams['font.family'] = 'sans-serif'
             matplotlib.rcParams['axes.unicode_minus'] = False
-            data0 = pd.read_table(myFile, delim_whitespace=True)
+
+            # data0 = pd.read_table(myFile, delim_whitespace=True)
+            data0 = pd.read_table(myFile, sep='\s+')
+            # except:
+            #     data0 = pd.read_excel(myFile)
             #
             f = data0.plot()
             Id = request.user.id
@@ -122,33 +126,41 @@ class CourseD2View(View):
             # sensor = Sensor.objects.get(id=2)
 
             #处理数据
-            data1 = pd.read_table('media/tmp/腰准备降重心.txt', delim_whitespace=True)
-            data2 = pd.read_table('media/tmp/腰准备动作没降重心.txt', delim_whitespace=True)
-            data3 = pd.concat([data1,data2],axis=0)
+            # data1 = pd.read_table('media/tmp/腰准备降重心.txt', delim_whitespace=True)
+            # data2 = pd.read_table('media/tmp/腰准备动作没降重心.txt', delim_whitespace=True)
+            data3 = pd.read_table('media/tmp/shiyan_sum.txt', delim_whitespace=True)
+            # data3 = pd.concat([data1,data2],axis=0)
             from sklearn import preprocessing
             scaler = preprocessing.StandardScaler().fit(data3)
             df = scaler.transform(data0)
             df = pd.DataFrame(df)
-            n_prev = 50
+            n_prev = 100
             # from keras.utils.np_utils import to_categorical
             import numpy as np
             docX, docY = [], []
-            for i in range(0, len(df) - n_prev, 25):
+            for i in range(0, len(df) - n_prev, 50):
                 docX.append(df.iloc[i:i + n_prev].as_matrix())
             alsX = np.array(docX)
-            netfile = "media/tmp/net_0.h5"
+            netfile = "media/tmp/sum.h5"
             # from keras.models import load_model
             # model = load_model(netfile)
             # import numpy as np
             # model.predict(np.zeros((2,50,9)))
             global model
             y_pred = model.predict(alsX).round()
-            pred = y_pred[0][25][0]
+            pred1 = np.argmax(y_pred, axis=2)
+            pred = np.argmax(np.bincount(pred1[1]))
             #category to 类别
-            if pred == 1:
-                sensor.category = "重心下降标准"
-            else:
-                sensor.category = "重心未下降标准"
+            if pred == 0:
+                sensor.category = "站立"
+            elif pred == 5:
+                sensor.category = "跑步"
+            elif pred == 6:
+                sensor.category = "骑自行车"
+            elif pred == 12:
+                sensor.category = "上楼"
+            elif pred == 24:
+                sensor.category = "跳绳"
             sensor.user = request.user
             sensor.save()
 
@@ -163,4 +175,4 @@ class CourseD2View(View):
             # for chunk in myFile.chunks():      # 分块写入文件
             #     destination.write(chunk)
             # destination.close()
-            return HttpResponse("upload over!")
+            # return HttpResponse("upload over!")

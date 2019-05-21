@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}体育夏令营-跃童·阳光{% endblock %}
+{% block title %}智能识别-人体运动识别系统{% endblock %}
 {% block custom_bread %}
     <section>
         <div class="wp">
             <ul  class="crumbs">
                 <li><a href="/">首页</a>></li>
-                <li><a href="{% url 'course:course_list' %}">体育夏令营课程</a>></li>
+                <li><a href="{% url 'course:course_list' %}">智能识别</a>></li>
                 <li>智能识别</li>
             </ul>
         </div>
@@ -27,26 +27,26 @@
 					<div class="des">
 						<h1 title="django 从入门到精通体验开始了">{{ course.name }}</h1>
 						<span class="key">{{ course.desc }}</span>
-						<div class="prize">
-							<span class="fl">难度：<i class="key">{{ course.get_degree_display }}</i></span>
-							<span class="fr">学习人数：{{ course.students }}</span>
-						</div>
-						<ul class="parameter">
-							<li><span class="pram word3">时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</span><span>{{ course.learn_times }}</span></li>
+{#						<div class="prize">#}
+{#							<span class="fl">难度：<i class="key">{{ course.get_degree_display }}</i></span>#}
+{#							<span class="fr">学习人数：{{ course.students }}</span>#}
+{#						</div>#}
+{#						<ul class="parameter">#}
+{#							<li><span class="pram word3">时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长：</span><span>{{ course.learn_times }}</span></li>#}
 {#                            <li><span class="pram word3">章&nbsp;节&nbsp;数：</span><span>{{ course.get_zj_nums }}</span></li>#}
-                            <li><span class="pram word3">课程类别：</span><span title="">{{ course.category }}</span></li>
-							<li class="piclist"><span class="pram word4">学习用户：</span>
-                            {% for user_course in course.get_learn_users %}
-                                    <span class="pic"><img width="40" height="40" src="{{ MEDIA_URL }}{{ user_course.user.image }}"/></span>
-                            {% endfor %}
-							</li>
-						</ul>
-						<div class="btns">
-							<div class="btn colectgroupbtn"  id="jsLeftBtn">
-                                  收藏
-                            </div>
+{#                            <li><span class="pram word3">课程类别：</span><span title="">{{ course.category }}</span></li>#}
+{#							<li class="piclist"><span class="pram word4">学习用户：</span>#}
+{#                            {% for user_course in course.get_learn_users %}#}
+{#                                    <span class="pic"><img width="40" height="40" src="{{ MEDIA_URL }}{{ user_course.user.image }}"/></span>#}
+{#                            {% endfor %}#}
+{#							</li>#}
+{#						</ul>#}
+{#						<div class="btns">#}
+{#							<div class="btn colectgroupbtn"  id="jsLeftBtn">#}
+{#                                  收藏#}
+{#                            </div>#}
 {#                                <div class="buy btn"><a style="color: white" href="course-video.html">开始学习</a></div>#}
-						</div>
+{#						</div>#}
 					</div>
                     <div class="group-share-box">
                         <div class="bdsharebuttonbox"
@@ -66,8 +66,8 @@
 				</div>
 				<div class="right">
 					<div class="head">
-						<h1>授课机构</h1>
-						<p>世界名校，课程权威</p>
+						<h1>识别模型</h1>
+{#						<p>世界名校，课程权威</p>#}
 					</div>
 					<div class="pic">
                         <a href="/company/14/">
@@ -86,14 +86,14 @@
                             <!--<li>
                                 <span>课 &nbsp;程&nbsp; 数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{ course.course_org.co }}</span>
                             </li>-->
-                            <li>
-                                <span>教 &nbsp;师&nbsp; 数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{ course.course_org.get_teacher_nums }}</span>
-                            </li>
-							<li>所在地区：&nbsp;&nbsp; {{ course.course_org.address }}</li>
-							<li>认&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;证&nbsp;:
-                                &nbsp;&nbsp;
-								    <img title="金牌机构", src="{% static 'images/gold.png' %}"/>
-							</li>
+{#                            <li>#}
+{#                                <span>教 &nbsp;师&nbsp; 数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{ course.course_org.get_teacher_nums }}</span>#}
+{#                            </li>#}
+{#							<li>所在地区：&nbsp;&nbsp; {{ course.course_org.address }}</li>#}
+{#							<li>认&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;证&nbsp;:#}
+{#                                &nbsp;&nbsp;#}
+{#								    <img title="金牌机构", src="{% static 'images/gold.png' %}"/>#}
+{#							</li>#}
 						</ul>
 					</div>
 				</div>
@@ -107,18 +107,18 @@
 			<div class="left layout">
 				<div class="head">
 					<ul class="tab_header">
-						<li class="active">课程详情</li>
+						<li class="active">识别详情</li>
 					</ul>
 				</div>
 				<div class="tab_cont tab_cont1">
                     <p>&nbsp; &nbsp; {{ course.detail }}</p>
-{#                    <form enctype="multipart/form-data" action="{% url 'course:course_detail2' course.id %}" method="post">#}
-{##}
-{#                        <input type="file" name="myfile" id="avatarUp" class="js-img-up"/>#}
+                    <form enctype="multipart/form-data" action="{% url 'course:course_detail2' course.id %}" method="post">
+
+                        <input type="file" name="myfile" id="avatarUp" class="js-img-up"/>
 {#                        <span class="button btn-green btn-w100" id="jsAvatarBtn">上传</span>#}
-{#                        <input type="submit" class="button btn-green btn-w100" value="开始识别"/>#}
-{#                         {% csrf_token %}#}
-{#                    </form>#}
+                        <input type="submit" class="button btn-green btn-w100" value="开始识别"/>
+                         {% csrf_token %}
+                    </form>
 
 					<p>
 
@@ -128,24 +128,24 @@
 
                 </div>
             </div>
-			<div class="right layout">
-				<div class="head">相关课程推荐</div>
-                <div class="group_recommend">
-                {% for relate_course in relate_course %}
-                        <dl>
-                            <dt>
-                                <a target="_blank" href="">
-                                    <img width="240" height="220" class="scrollLoading" src="{{ MEDIA_URL }}{{ relate_course.image }}"/>
-                                </a>
-                            </dt>
-                            <dd>
-                                <a target="_blank" href=""><h2> {{ relate_course.name }}</h2></a>
-                                <span class="fl">学习时长：<i class="key">{{ relate_course.learn_times }}</i></span>
-                            </dd>
-                        </dl>
-                {% endfor %}
-                </div>
-			</div>
+{#			<div class="right layout">#}
+{#				<div class="head">相关课程推荐</div>#}
+{#                <div class="group_recommend">#}
+{#                {% for relate_course in relate_course %}#}
+{#                        <dl>#}
+{#                            <dt>#}
+{#                                <a target="_blank" href="">#}
+{#                                    <img width="240" height="220" class="scrollLoading" src="{{ MEDIA_URL }}{{ relate_course.image }}"/>#}
+{#                                </a>#}
+{#                            </dt>#}
+{#                            <dd>#}
+{#                                <a target="_blank" href=""><h2> {{ relate_course.name }}</h2></a>#}
+{#                                <span class="fl">学习时长：<i class="key">{{ relate_course.learn_times }}</i></span>#}
+{#                            </dd>#}
+{#                        </dl>#}
+{#                {% endfor %}#}
+{#                </div>#}
+{#			</div>#}
 		</div>
 	</div>
 </section>

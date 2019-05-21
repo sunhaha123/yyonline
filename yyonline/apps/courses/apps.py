@@ -6,4 +6,4 @@ from django.apps import AppConfig
 
 class CoursesConfig(AppConfig):
     name = 'courses'
-    verbose_name = "课程"
+    verbose_name = "智能识别"

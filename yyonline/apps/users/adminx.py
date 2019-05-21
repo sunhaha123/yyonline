@@ -18,8 +18,8 @@ class BaseSetting(object):
     use_bootswatch = True
 
 class GloabalSettings(object):
-    site_title = "跃童·阳光"
-    site_footer = "跃童·阳光"
+    site_title = "人体运动识别系统"
+    site_footer = "人体运动识别系统"
     menu_style = "accordion"
 
 class EmailVerifyRecordAdmin(object):

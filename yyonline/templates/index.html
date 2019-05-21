@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}跃童·阳光{% endblock %}
+{% block title %}云鸟网{% endblock %}
 {% block custom_bread %}
 {% endblock %}
 {% block content %}
@@ -30,39 +30,39 @@
 			</div>
 <!--banner end-->
 <!--feature start-->
-	<section>
-		<div class="wp">
-			<ul class="feature">
-				<li class="feature1">
-					<img class="pic" src="/static/images/feature1.png"/>
-					<p class="center">师资力量雄厚</p>
-				</li>
-				<li class="feature2">
-					<img class="pic" src="/static/images/feature2.png"/>
-					<p class="center">定制课程大纲、专业教学体系</p>
-				</li>
-				<li class="feature3">
-					<img class="pic" src="/static/images/feature3.png"/>
-					<p class="center">分班教学、小班授课</p>
-				</li>
-				<li class="feature4">
-					<img class="pic" src="/static/images/feature4.png"/>
-					<p class="center">教学场地优越</p>
-				</li>
-			</ul>
-		</div>
-	</section>
+{#	<section>#}
+{#		<div class="wp">#}
+{#			<ul class="feature">#}
+{#				<li class="feature1">#}
+{#					<img class="pic" src="/static/images/feature1.png"/>#}
+{#					<p class="center">专业权威</p>#}
+{#				</li>#}
+{#				<li class="feature2">#}
+{#					<img class="pic" src="/static/images/feature2.png"/>#}
+{#					<p class="center">课程最新</p>#}
+{#				</li>#}
+{#				<li class="feature3">#}
+{#					<img class="pic" src="/static/images/feature3.png"/>#}
+{#					<p class="center">名师授课</p>#}
+{#				</li>#}
+{#				<li class="feature4">#}
+{#					<img class="pic" src="/static/images/feature4.png"/>#}
+{#					<p class="center">数据真实</p>#}
+{#				</li>#}
+{#			</ul>#}
+{#		</div>#}
+{#	</section>#}
 <!--feature end-->
 <!--module1 start-->
 	<section>
 		<div class="module">
 			<div class="wp">
-				<h1>体育夏令营</h1>
+				<h1>智能识别</h1>
 				<div class="module1 eachmod">
 					<div class="module1_1 left">
-						<img width="228" height="614" src="/static/images/module7_1.jpg"/>
-						<p class="fisrt_word">名师授课<br/>专业权威</p>
-						<a class="more" href="{% url 'course:course_list' %}">查看更多课程 ></a>
+						<img width="228" height="614" src="/static/images/module3_1.jpg"/>
+						<p class="fisrt_word"></p>
+						<a class="more" href="{% url 'course:course_list' %}">查看更多 ></a>
 					</div>
 					<div class="right group_list">
 						<div class="module1_2 box">
@@ -108,12 +108,12 @@
 	<section>
 		<div class="module greybg">
 			<div class="wp">
-				<h1>课程机构</h1>
+				<h1>模型列表</h1>
 				<div class="module3 eachmod">
 					<div class="module3_1 left">
 						<img width="228" height="463" src="/static/images/module3_1.jpg"/>
-						<p class="fisrt_word">名校来袭<br/>权威认证</p>
-						<a class="more" href="{% url 'org:org_list' %}">查看更多机构 ></a>
+{#						<p class="fisrt_word">名校来袭<br/>权威认证</p>#}
+						<a class="more" href="{% url 'org:org_list' %}">查看更多 ></a>
 					</div>
 					<div class="right">
 						<ul>
@@ -128,7 +128,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p><span class="key" title="跃童·阳光">{{ org.name }}</span></p>
+                                        <p><span class="key" title="人体运动识别系统">{{ org.name }}</span></p>
                                     </a>
                                 </li>
                             {% endfor %}

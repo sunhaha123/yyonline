@@ -66,9 +66,9 @@
 <header>
     <div class="c-box fff-box">
         <div class="wp header-box">
-            <p class="fl hd-tips">跃童·阳光球体育夏令营平台！</p>
+            <p class="fl hd-tips">人体运动识别系统！</p>
             <ul class="fr hd-bar">
-                <li>服务电话：<span>400233333</span></li>
+{#                <li>服务电话：<span>400233333</span></li>#}
                 <li><a href="{% url 'login' %}">[登录]</a></li>
                 <li class="active"><a href="{% url 'register' %}">[注册]</a></li>
             </ul>
@@ -107,15 +107,6 @@
                 <div class="tab-form">
                     <form id="email_register_form" method="post" action="{% url 'register' %}" autocomplete="off">
                         <input type='hidden' name='csrfmiddlewaretoken' value='gTZljXgnpvxn0fKZ1XkWrM1PrCGSjiCZ' />
-                        <div class="searchbox fr">
-          		   			<select name="is_teacher">
-          		     			<option value ="1"> 我 是 教 练 </option>
-        		    			<option value ="0"> 我 是 学 员 </option>
-       		   			</select>		
-          				 </div> 		
-                 		<p>&nbsp;</p>		
-                		<p>&nbsp;</p>		
-                    	<p>&nbsp;</p>
                         <div class="form-group marb20 {% if register_form.errors.email %} errorput {% endif %}">
                             <label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
                             <input  type="text" id="id_email" name="email" value="{{ register_form.email.value }}" placeholder="请输入您的邮箱地址" />
@@ -124,7 +115,7 @@
                             <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
                             <input type="password" id="id_password" name="password"  value="{{ register_form.password.value }}" placeholder="请输入6-20位非中文字符密码" />
                         </div>
-<div class="form-group marb8 captcha1 {% if register_form.errors.captcha %} errorput {% endif %}">
+                        <div class="form-group marb8 captcha1 {% if register_form.errors.captcha %} errorput {% endif %}">
                             <label>验&nbsp;证&nbsp;码</label>
                             {{ register_form.captcha }}
 {#                            <img src="/captcha/image/2f3f82e5f7a054bf5caa93b9b0bb6cc308fb7011/" alt="captcha" class="captcha" /> <input id="id_captcha_0" name="captcha_0" type="hidden" value="2f3f82e5f7a054bf5caa93b9b0bb6cc308fb7011" /> <input autocomplete="off" id="id_captcha_1" name="captcha_1" type="text" />#}

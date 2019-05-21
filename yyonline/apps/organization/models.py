@@ -31,7 +31,7 @@ class CourseOrg(models.Model):
     add_time = models.DateTimeField(default=datetime.now)
 
     class Meta:
-        verbose_name = u"课程机构"
+        verbose_name = u"模型列表"
         verbose_name_plural = verbose_name
 
     def get_teacher_nums(self):

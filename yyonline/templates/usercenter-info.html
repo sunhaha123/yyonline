@@ -1,5 +1,5 @@
 {% extends 'usercenter-base.html' %}
-{% block title %}个人中心-跃童·阳光{% endblock %}
+{% block title %}个人中心-人体运动识别系统{% endblock %}
 {% block cutom_bread %}
 <section>
         <div class="wp">
@@ -52,16 +52,16 @@
 							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"  name="gender" value="male" {% if request.user.gender == 'male' %}checked="checked"{% endif %}>男</label>
 							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="female" {% if request.user.gender == 'female' %}checked="checked"{% endif %}>女</label>
 						</li>
-                        <li>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份：
-                        	<input class="borderno" type="text" name="is_staff" readonly="readonly" value="{% if  request.user.is_staff == 1%}教练{% else %}学员{% endif %}"/>
+{#                        <li>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份：#}
+{#                        	<input class="borderno" type="text" name="is_staff" readonly="readonly" value="{% if  request.user.is_staff == 1%}教练{% else %}学员{% endif %}"/>#}
 {#                            <span class="green changeemai_btn">[修改]</span>#}
-                    	</li>
-						<li class="p_infor_city">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：
-                            <input type="text" name="address" id="address" placeholder="请输入你的地址" value="{{ request.user.address }}" maxlength="10">
+{#                    	</li>#}
+						<li class="p_infor_city">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高：
+                            <input type="text" name="address" id="address" placeholder="请输入你的身高" value="{{ request.user.height }}" maxlength="10">
 						    <i class="error-tips"></i>
                         </li>
-						<li>手&nbsp;&nbsp;机&nbsp;&nbsp;号：
-                            <input type="text" name="mobile" id="mobile" placeholder="请输入你的手机号码" value="{{ request.user.mobile|default_if_none:''}}" maxlength="11">
+						<li>体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重：
+                            <input type="text" name="mobile" id="mobile" placeholder="请输入你的体重" value="{{ request.user.weight|default_if_none:''}}" maxlength="11">
                         </li>
                         <li>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：
                         	<input class="borderno" type="text" name="email" readonly="readonly" value="{{ request.user.email }}"/>

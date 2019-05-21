@@ -15,8 +15,10 @@ class UserProfile(AbstractUser):
     address = models.CharField(max_length=100,default=u'',verbose_name=u'地址')
     mobile = models.CharField(max_length=11,null=True,blank=True,verbose_name=u'手机号')
     image = models.ImageField(upload_to="image/%Y/%m",default=u'image/default.png',max_length=100,verbose_name=u'头像')
+    height = models.CharField(max_length=4, null=True, blank=True, verbose_name=u'身高')
+    weight = models.CharField(max_length=4, null=True, blank=True, verbose_name=u'体重')
     # birthday = models.DateField(null=True, blank=True, verbose_name=u'生日', default='2010-01-01')
-    # is_staff = models.BooleanField(default=False,verbose_name=u'是否为教练')
+    # is_staff = models.BooleanField(default=False,verbose_name=u'是否为mak教练')
 
     class Meta:
         verbose_name = u'用户信息'

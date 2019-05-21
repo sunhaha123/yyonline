@@ -6,7 +6,6 @@
 
 from random import Random
 from django.core.mail import send_mail
-import smtplib
 
 from users.models import EmailVerifyRecord
 from yyonline.settings import DEFAULT_FROM_EMAIL
@@ -49,12 +48,12 @@ def send_register_email(email,send_type="register"):
     email_title = ""
     email_body = ""
     if send_type == "register":
-        email_title = "跃童·阳光注册激活"
-        email_body = "跃童·阳光请点击激活：http://etennis.top/active/{0}".format(code)
+        email_title = "人体运动识别系统注册激活"
+        email_body = "人体运动识别系统请点击激活：http://etennis.top/active/{0}".format(code)
         try:
          send_status = send_mail(email_title, email_body, DEFAULT_FROM_EMAIL, [email], fail_silently=False)
 
-        except smtplib.SMTPException as e:
+        except SMTPException as e:
             print(e)
 
     elif send_type == "forget":

@@ -6,5 +6,5 @@ from django.apps import AppConfig
 
 class OrganizationConfig(AppConfig):
     name = 'organization'
-    verbose_name = u"公司/学校"
+    verbose_name = u"系统识别模型"
 

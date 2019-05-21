@@ -17,7 +17,7 @@ class CityDictAdmin(object):
 
 
 class CourseOrgAdmin(object):
-    list_display = ['name', 'city','desc', 'click_nums', 'fav_nums']
+    list_display = ['name', 'click_nums', 'fav_nums']
     search_fields = ['name', 'desc', 'click_nums', 'fav_nums']
     list_filter = ['name', 'desc', 'click_nums', 'fav_nums']
 
@@ -28,6 +28,6 @@ class TeacherAdmin(object):
     list_filter = ['org', 'name', 'work_years', 'work_company']
 
 
-xadmin.site.register(CityDict, CityDictAdmin)
+# xadmin.site.register(CityDict, CityDictAdmin)
 xadmin.site.register(CourseOrg, CourseOrgAdmin)
-xadmin.site.register(Teacher, TeacherAdmin)
+# xadmin.site.register(Teacher, TeacherAdmin)
